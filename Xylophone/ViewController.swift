@@ -6,9 +6,15 @@
 //  Copyright © 2019 The App Brewery. All rights reserved.
 //
 
+// Audio-visual foundational module
+import AVFoundation
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // ! "unwraps"
+    // Create new AVAudioPlayer
+    var player: AVAudioPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,9 +22,16 @@ class ViewController: UIViewController {
 
 
     @IBAction func keyPressed(_ sender: UIButton) {
-        print("I got pressed!")
+        playSound()
     }
     
+    func playSound() {
+        // Tell code where to find the correct sound to play
+        let url = Bundle.main.url(forResource: "C", withExtension: "wav")
+        // Gives the audio file specified to the AudioPlayer
+        player = try! AVAudioPlayer(contentsOf: url!)
+        player.play()
+    }
 
 }
 
