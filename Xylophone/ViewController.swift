@@ -22,12 +22,16 @@ class ViewController: UIViewController {
 
 
     @IBAction func keyPressed(_ sender: UIButton) {
-        playSound()
+        
+        // print(sender.titleLabel?.text)
+        print(sender.currentTitle!)
+        playSound(sender.currentTitle ?? "C")
+        
     }
     
-    func playSound() {
+    func playSound(_ sender: String) {
         // Tell code where to find the correct sound to play
-        let url = Bundle.main.url(forResource: "C", withExtension: "wav")
+        let url = Bundle.main.url(forResource: sender, withExtension: "wav")
         // Gives the audio file specified to the AudioPlayer
         player = try! AVAudioPlayer(contentsOf: url!)
         player.play()
