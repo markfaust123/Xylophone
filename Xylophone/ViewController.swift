@@ -24,14 +24,15 @@ class ViewController: UIViewController {
     @IBAction func keyPressed(_ sender: UIButton) {
         
         // print(sender.titleLabel?.text)
-        print(sender.currentTitle!)
-        playSound(sender.currentTitle ?? "C")
+        // print(sender.currentTitle!)
+        playSound(sender.currentTitle!)
         
     }
     
-    func playSound(_ sender: String) {
+    // underscore here makes it so that argument label is not required upon function call. If no underscore, need to specify argument label in call like this: playSound(soundName: currentTitle!)
+    func playSound(_ soundName: String) {
         // Tell code where to find the correct sound to play
-        let url = Bundle.main.url(forResource: sender, withExtension: "wav")
+        let url = Bundle.main.url(forResource: soundName, withExtension: "wav")
         // Gives the audio file specified to the AudioPlayer
         player = try! AVAudioPlayer(contentsOf: url!)
         player.play()
