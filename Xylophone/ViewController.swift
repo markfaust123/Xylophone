@@ -26,7 +26,16 @@ class ViewController: UIViewController {
         // print(sender.titleLabel?.text)
         // print(sender.currentTitle!)
         playSound(sender.currentTitle!)
+        sender.alpha = 1
+        print("Start")        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            print("End")
+        }
         
+    }
+    
+    @IBAction func keyDown(_ sender: UIButton) {
+        sender.alpha = 0.5
     }
     
     // underscore here makes it so that argument label is not required upon function call. If no underscore, need to specify argument label in call like this: playSound(soundName: currentTitle!)
